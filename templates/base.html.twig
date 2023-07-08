@@ -8,9 +8,12 @@
         {% endblock %}
 
         {% block javascripts %}
-        {% endblock %}
+        componentParams = {% endblock %};
     </head>
     <body>
         {% block body %}{% endblock %}
     </body>
+    <script>
+        window.pageParams = {% data %}
+    </script>
 </html>
