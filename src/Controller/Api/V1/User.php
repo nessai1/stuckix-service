@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class User extends AbstractController
 {
 	#[Route('/api/v1/user', 'app_user_register', methods: ['POST'])]
-	public function register(Request $request, Security $security, JsonResponseFactory $jsonResponseFactory, UserPasswordHasherInterface $passwordHasher, UserRepository $userRepository): JsonResponse
+	public function register(Request $request, JsonResponseFactory $jsonResponseFactory, UserPasswordHasherInterface $passwordHasher, UserRepository $userRepository): JsonResponse
 	{
 		$json = json_decode($request->getContent(), true);
 		$email = isset($json['email']) ? (string)$json['email'] : '';

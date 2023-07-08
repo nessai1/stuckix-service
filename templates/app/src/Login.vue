@@ -5,40 +5,39 @@ const props = defineProps(['csrf'])
 <template>
   <div class="bg-white rounded-2xl shadow container grid content-between">
     <div class="p-4">
-      <header class="flex py-4 font-bold text-lg">
-        Logo
-        Название
+      <header class="flex">
+        <img class="logo"  src="../public/icons/Logo.png">
+        <img class="logo-title ml-3" src="../public/icons/Stuckix.svg">
       </header>
 
       <form method="post">
         <input type="hidden" name="_csrf_token" :value="props.csrf">
-        <div class="flex flex-col pt-2 w-min">
-          Регистрация
-          <div class="border-2 mt-1 rounded border-sky-400"/>
-        </div>
-        <div class="flex flex-col pt-2 pb-3">
-          <label class="flex py-2">
-            E-mail
-          </label>
-          <input type="text" name="email" id="" placeholder="Email" class="border border-gray-300 rounded pl-3 py-1">
+        <div>
+          <div class="flex flex-col pt-2 w-min">
+            Регистрация
+            <div class="border-2 mt-1 rounded border-sky-400"/>
+          </div>
+          <div class="flex flex-col pt-2 pb-3">
+            <label class="flex py-2">
+              Ваш аккаунт
+            </label>
+            <input type="text" name="" id="" placeholder="Имя пользователя или Email" class="border border-gray-300 rounded pl-3 py-2">
 
-          <label class="flex py-2">
-            Пароль
-          </label>
-          <div class="input border border-gray-300 rounded flex justify-between">
-            <input name="password" v-if="showPassword" type="text" v-model="password" placeholder="Password" class="pl-3 py-1 w-full">
-            <input name="password" v-else type="password" v-model="password" placeholder="Password" class="pl-3 py-1 w-full">
-            <button class="eye-button rounded" type="button" @click="toggleShow"></button>
+            <label class="flex py-2">
+              Пароль
+            </label>
+            <div class="input border border-gray-300 rounded flex justify-between">
+              <input name="password" v-if="showPassword" type="text" v-model="password" placeholder="Пароль" class="pl-3 w-full py-2">
+              <input name="password" v-else type="password" v-model="password" placeholder="Пароль" class="pl-3 w-full py-2">
+              <button class="eye-button rounded" type="button" @click="toggleShow"></button>
+            </div>
           </div>
         </div>
 
-        <footer class="flex justify-between">
-          <button type="submit" class="sign-button rounded font-semibold text-white">
-            Авторизоваться
+        <footer class="flex justify-between mt-6">
+          <button type="submit" class="sign-button rounded font-normal text-white">
+            Зарегестрироваться
           </button>
-          <a class="grid content-center forget-password">
-            Забыли пароль?
-          </a>
         </footer>
       </form>
     </div>
