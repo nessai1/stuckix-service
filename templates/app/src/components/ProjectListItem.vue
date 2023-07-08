@@ -10,9 +10,8 @@ function copyToClipboard(text)
   navigator.clipboard.writeText(text);
 }
 
-
-
-defineProps(['project']);
+const props = defineProps(['project']);
+const issuesLink = "/project/" + props.project.token + "/issues";
 </script>
 
 <template>
@@ -30,6 +29,7 @@ defineProps(['project']);
 
       <span class="text-left text-lg text-slate-500 flex items-center">
       Ошибки: {{project.issuesCount}}
+        <a style="margin-left: 20px" :href="issuesLink">Список ошибок</a>
     </span>
 
     </div>

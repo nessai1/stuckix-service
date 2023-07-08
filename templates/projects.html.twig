@@ -1,12 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-
+	<link rel="stylesheet" href="/assets/projects/_plugin-vue_export-helper-d43cd2b6.css">
+	<link rel="stylesheet" href="/assets/projects/projects-7257bfa3.css">
 {% endblock %}
-	{% block js %}
-		<script>
-			window.pageParams = JSON.parse("{{ inlineJs | json_encode() | escape('js') }}");
-		</script>
-	{% endblock %}
 {% block javascripts %}
+	<script type="module" crossorigin src="/assets/projects/projects-2724b1d9.js"></script>
+	<link rel="modulepreload" crossorigin href="/assets/projects/_plugin-vue_export-helper-7e7ab165.js">
 {% endblock %}
