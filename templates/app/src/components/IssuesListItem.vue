@@ -3,7 +3,18 @@ defineProps(['issue']);
 
 function redirectIssue(issue)
 {
-  window.location.href = 'issue.html?id=' + issue.id;
+  window.location.href = 'issue.html?id=' + issue.eventId;
+}
+
+function getPath(issue)
+{
+  return issue.exception.stacktrace.contexts.pop().filename;
+}
+
+function getErrorLine(issue)
+{
+  console.log(issue.exception.stacktrace);
+  return issue.exception.stacktrace.contexts.pop().line_number;
 }
 </script>
 
@@ -19,10 +30,10 @@ function redirectIssue(issue)
           v-if="issue.status === 'new'"
       >
       <span class="text-lg text-left font-semibold text-slate-900 mr-2">
-        {{issue.title}}
+        {{issue.exception.value}}
       </span>
       <span class="text-sm text-left text-slate-400">
-        {{issue.errorFile}} в строке {{issue.errorLine}}
+        {{getPath(issue)}} в строке {{getErrorLine(issue)}}
       </span>
     </div>
 
@@ -33,17 +44,12 @@ function redirectIssue(issue)
     <div class="flex-row text-left">
       <img class="mr-1 inline" src="/icons/project.svg">
       <span class="text-left text-sm text-slate-900 w-fit mr-3">
-        {{issue.projectName}}
+        {{issue.project.name}}
       </span>
 
       <img class="mr-1 inline" src="/icons/clock.svg">
       <span class="text-left text-sm text-slate-400 w-fit mr-3">
-        {{issue.time}}
-      </span>
-
-      <img class="mr-1 inline" src="/icons/comments.svg">
-      <span class="text-left text-sm text-slate-500 w-fit mr-3">
-        {{issue.commentsCount}}
+        {{issue.exceptionDate.date}}
       </span>
     </div>
 

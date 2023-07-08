@@ -3,6 +3,7 @@
 import IssuesListItem from "./IssuesListItem.vue";
 import IssuesEmptyState from "./empty-states/Issues.vue";
 const props = defineProps(['issues', 'solvedCount', 'unsolvedCount']);
+console.log(props.issues);
 
 </script>
 
@@ -27,7 +28,7 @@ const props = defineProps(['issues', 'solvedCount', 'unsolvedCount']);
     </div>
     <IssuesListItem
         v-for="issue in this.issues"
-        :key="issue.id"
+        :key="issue.eventId"
         :issue="issue"
     ></IssuesListItem>
   </div>
