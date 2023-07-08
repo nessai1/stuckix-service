@@ -42,7 +42,7 @@ const issues = [
 </script>
 
 <template>
-  <HeadWrapper id="projects">
+  <HeadWrapper id="errors">
     <IssuesList :issues="issues" :solved-count="12" :unsolved-count="10"></IssuesList>
   </HeadWrapper>
 </template>

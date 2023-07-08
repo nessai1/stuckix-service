@@ -23,7 +23,7 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .sidebar-items-container {
   display: flex;
@@ -39,7 +39,7 @@ export default {
   align-items: center;
   flex-shrink: 0;
   border-radius: 8px;
-  margin: 10px;
+  margin-bottom: 8px;
   cursor: pointer;
   transition: all .3s ease;
 }
@@ -63,5 +63,9 @@ export default {
 
 .sidebar-item-active {
   background: rgba(255, 255, 255, 0.21);
+
+  .sidebar-item-text {
+    font-weight: 600;
+  }
 }
 </style>

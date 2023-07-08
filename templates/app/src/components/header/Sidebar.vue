@@ -34,8 +34,10 @@ export default {
 
 <template>
   <div class="projects-sidebar">
+    <div class="sidebar-content">
     <SidebarUser :name="user.name" :email="user.email"></SidebarUser>
     <SidebarItemList :id="id" :items=itemsList></SidebarItemList>
+    </div>
   </div>
 </template>
 

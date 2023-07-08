@@ -40,7 +40,8 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 30px;
+  margin: 20px;
+  padding-bottom: 13px;
   border-bottom: 1px solid #FFFFFF38;
 }
 
