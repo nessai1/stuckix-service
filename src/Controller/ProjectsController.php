@@ -35,4 +35,12 @@ final class ProjectsController extends AbstractController
 			]
 		);
 	}
+
+	#[Route("/projectAdd", methods: ['GET'])]
+	public function add(): Response
+	{
+		return $this->render(
+			'projectAdd.html.twig',
+		);
+	}
 }
