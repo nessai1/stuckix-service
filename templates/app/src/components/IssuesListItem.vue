@@ -5,6 +5,11 @@ defineProps(['issue']);
 <template>
   <div class="issue-item-container rounded-xl p-4 m-2 w-full">
     <div class="flex-row text-left">
+      <img
+          class="mr-1 inline"
+          src="/icons/unsolved-issue.svg"
+          v-if="!issue.solved"
+      >
       <span class="text-lg text-left font-semibold text-slate-900 mr-2">
         {{issue.title}}
       </span>

@@ -24,12 +24,4 @@ defineProps(['projects']);
   margin: 40px;
   flex: 1;
 }
-
-.project-list-title {
-  color: #0A0A0A;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-}
 </style>
