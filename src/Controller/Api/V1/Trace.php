@@ -3,12 +3,13 @@
 namespace App\Controller\Api\V1;
 
 use App\JsonResponseFactory;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
 	#[Route('api/v1/trace', 'api_trace', methods: "POST")]
-	public function add(JsonResponseFactory $jsonResponseFactory): \Symfony\Component\HttpFoundation\JsonResponse
+	public function add(Request $request, JsonResponseFactory $jsonResponseFactory): \Symfony\Component\HttpFoundation\JsonResponse
 	{
 		return $jsonResponseFactory->createNotImplemented();
 	}

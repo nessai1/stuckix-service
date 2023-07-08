@@ -36,6 +36,9 @@ class Project extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControl
 
 		return new JsonResponse([
 			'success' => true,
+			'data' => [
+				'token' => $project->token,
+			]
 		]);
 	}
 }
