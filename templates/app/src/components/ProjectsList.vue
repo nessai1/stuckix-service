@@ -9,6 +9,8 @@ defineProps(['projects']);
 <template>
   <div class="project-list-container" v-if="projects.length">
     <div class="font-semibold text-slate-900 text-4xl text-left ml-2 mb-6">Проекты</div>
+    <a href="/projectAdd.html" class="text-xl text-left m-3">Добавить проект</a>
+
     <ProjectListItem
         v-for="project in projects"
         :key="project.id"

@@ -21,7 +21,7 @@ const props = defineProps(['csrf'])
             <label class="flex py-2">
               Ваш аккаунт
             </label>
-            <input type="text" name="" id="" placeholder="Имя пользователя или Email" class="border border-gray-300 rounded pl-3 py-2">
+            <input type="text" name="" id="" placeholder="Имя пользователя или Email" class="border border-gray-300 rounded pl-3 py-2 dark:bg-white">
 
             <label class="flex py-2">
               Пароль
