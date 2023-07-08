@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -28,13 +29,32 @@ class Project
 	public ?string $description = null;
 
 	#[ORM\OneToMany(mappedBy: 'project', targetEntity: Trace::class)]
-	private $traces;
+	private ArrayCollection $traces;
+
+	#[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
+	private ArrayCollection $users;
 
 	#[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, updatable: false)]
 	public \DateTimeImmutable $createDateTime;
 
+	public function __construct()
+	{
+		$this->traces = new ArrayCollection();
+		$this->users = new ArrayCollection();
+	}
+
 	public function getId(): int
 	{
 		return $this->id;
+	}
+
+	public function getUsers(): ArrayCollection
+	{
+		return $this->users;
+	}
+
+	public function getTraces(): ArrayCollection
+	{
+		return $this->traces;
 	}
 }
