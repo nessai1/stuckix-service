@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
+import tailwindcss from 'tailwindcss';
+import { splitVendorChunkPlugin } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [vue()],
+	plugins: [vue(),splitVendorChunkPlugin()],
 	build: {
 		outDir: '../../public/assets',
 		rollupOptions: {
@@ -17,10 +19,16 @@ export default defineConfig({
 				projectAdd: resolve(__dirname, 'projectAdd.html'),
 			},
 			output: {
-				entryFileNames: '[name].js', // Имя файла без хеша для каждого входного файла
-				chunkFileNames: '[name].js', // Имя файла без хеша для чанков
-				assetFileNames: '[name].[ext]' // Имя файла без хеша для статических ресурсов (например, изображений)
-			}
-		}
+				entryFileNames: '[name].js',
+				assetFileNames: '[name].[ext]',
+			},
+		},
+		css: {
+			postcss: {
+				plugins: [
+					tailwindcss,
+				],
+			},
+		},
 	}
 });
