@@ -3,7 +3,7 @@ defineProps(['issue']);
 </script>
 
 <template>
-  <div class="border-blue-300 border-2 rounded-xl p-4 m-2 w-full">
+  <div class="issue-item-container rounded-xl p-4 m-2 w-full">
     <div class="flex-row text-left">
       <span class="text-lg text-left font-semibold text-slate-900 mr-2">
         {{issue.title}}
@@ -38,5 +38,8 @@ defineProps(['issue']);
 </template>
 
 <style scoped>
-
+.issue-item-container {
+  border: 1px solid #E0E0E0;
+  background: #FCFCFC;
+}
 </style>
