@@ -14,7 +14,7 @@ final class ProjectsController extends AbstractController
 	{
 		if (!$this->getUser())
 		{
-			return $this->render('security/login.html.twig', ['last_username' => null, 'error' => null]);
+			return $this->redirectToRoute('app_login');
 		}
 
 		$projects = $projectRepository->findAll();
