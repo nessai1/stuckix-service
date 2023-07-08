@@ -36,4 +36,15 @@ class JsonResponseFactory
 			]
 		);
 	}
+
+	public function createAccessDenied(): JsonResponse
+	{
+		return new JsonResponse(
+			[
+				'errors' => [
+					'access' => 'access denied'
+				]
+			]
+		);
+	}
 }

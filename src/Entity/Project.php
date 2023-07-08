@@ -6,6 +6,7 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
@@ -17,7 +18,7 @@ class Project
 	#[ORM\Column(type: Types::INTEGER)]
 	private int $id;
 
-	#[ORM\Column(type: Types::STRING, length: 50, unique: true)]
+	#[ORM\Column(type: Types::STRING, length: 50)]
 	#[Assert\Length(min: 2, max: 50)]
 	public string $name;
 
@@ -28,8 +29,13 @@ class Project
 	#[ORM\Column(type: Types::STRING, length: 200, nullable: true)]
 	public ?string $description = null;
 
-	#[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
-	private $users;
+	#[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'project')]
+	#[ORM\JoinTable(
+		name: 'project_user',
+		joinColumns: [new ORM\JoinColumn(name: 'project_id', referencedColumnName: 'id')],
+		inverseJoinColumns: [new ORM\InverseJoinColumn(name: 'user_id', referencedColumnName: 'id')]
+	)]
+	private Collection $users;
 
 	#[ORM\OneToMany(mappedBy: 'project', targetEntity: Trace::class)]
 	private $traces;
@@ -51,6 +57,11 @@ class Project
 	public function getUsers(): ArrayCollection
 	{
 		return $this->users;
+	}
+	
+	public function addUser(User $user): void
+	{
+		$this->users->add($user);
 	}
 
 	public function getTraces(): ArrayCollection
