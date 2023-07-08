@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="bg-slate-200" style="width: 100px; height: 100px;">
     test
   </div>
   Login page
