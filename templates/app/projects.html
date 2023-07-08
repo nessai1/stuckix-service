@@ -8,7 +8,20 @@
 </head>
 <body>
 <script>
-	window.pageParams = {% someshit %}
+	window.pageParams = {
+        projects: [
+            {
+                id: 1,
+                title: 'First project',
+                description: 'prkdsfgsdpjfdsjg opsdj vs  sdopsdjv ',
+            },
+            {
+                id: 2,
+                title: 'second project',
+                description: 'prkdsfgsdpjfdsjg opsdj vs  sdopsdjv ',
+            },
+        ],
+    };
 </script>
 <div id="app"></div>
 <script type="module" src="/src/projects.js"></script>
