@@ -16,10 +16,11 @@ class User extends AbstractController
 	#[Route('/api/v1/user', 'app_user_register', methods: ['POST'])]
 	public function register(Request $request, Security $security, JsonResponseFactory $jsonResponseFactory, UserPasswordHasherInterface $passwordHasher, UserRepository $userRepository): JsonResponse
 	{
-		$email = (string)$request->get('email');
-		$password = (string)$request->get('password');
-		$name = (string)$request->get('name');
-		$surname = (string)$request->get('surname');
+		$json = json_decode($request->getContent(), true);
+		$email = isset($json['email']) ? (string)$json['email'] : '';
+		$password = isset($json['password']) ? (string)$json['password'] : '';
+		$name = isset($json['name']) ? (string)$json['name'] : '';
+		$surname = isset($json['surname']) ? (string)$json['surname'] : '';
 
 		if ($email === '' || $password === '' || $name === '')
 		{
@@ -32,6 +33,7 @@ class User extends AbstractController
 			$password
 		);
 		$user->setEmail($email)
+			->setName($name)
 			->setRoles(['ROLE_USER'])
 			->setPassword($hashedPassword);
 
@@ -83,6 +85,6 @@ class User extends AbstractController
 			return $jsonResponseFactory->createWithStatus(false, errors: ['login' => 'no login']);
 		}
 
-		return $jsonResponseFactory->createWithStatus($login->isSuccessful(), $login->getVary());
+		return $jsonResponseFactory->createWithStatus($login->isSuccessful(), array_merge($login->getVary(), ['email' => $user->getEmail(), 'name' => $user->getName(), 'surname' => $user->getSurname()]));
 	}
 }
