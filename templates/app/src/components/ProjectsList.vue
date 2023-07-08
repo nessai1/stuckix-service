@@ -1,12 +1,13 @@
 <script setup>
 
 import ProjectListItem from "./ProjectListItem.vue";
+import ProjectEmptyState from "./empty-states/Projects.vue";
 
 defineProps(['projects']);
 </script>
 
 <template>
-  <div class="project-list-container">
+  <div class="project-list-container" v-if="projects.length">
     <div class="font-semibold text-slate-900 text-4xl text-left m-10">Проекты</div>
     <ProjectListItem
         v-for="project in projects"
@@ -14,6 +15,7 @@ defineProps(['projects']);
         :project="project"
     ></ProjectListItem>
   </div>
+  <ProjectEmptyState v-else/>
 
 </template>
 
