@@ -4,6 +4,7 @@ namespace App\Controller\Api\V1;
 
 use App\JsonResponseFactory;
 use App\Repository\ProjectRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +24,8 @@ class Project extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControl
 
 		$json = json_decode($request->getContent(), true);
 		$name = $json['name'] ?? null;
+		$path = $json['path'] ?? null;
+
 		if (empty($name))
 		{
 			return $jsonResponseFactory->createInvalidData();
@@ -37,6 +40,15 @@ class Project extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControl
 		if ($user instanceof \App\Entity\User)
 		{
 			$project->addUser($user);
+
+			if (is_string($path))
+			{
+				$project->addUser($user, $path);
+			}
+			else
+			{
+				$project->addUser($user);
+			}
 		}
 
 		if (is_string($description))
