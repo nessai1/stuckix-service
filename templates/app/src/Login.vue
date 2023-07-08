@@ -64,7 +64,7 @@ const props = defineProps(['csrf'])
 }
 
 .eye-button{
-  background: url("../public/icons/eye.svg") no-repeat center;
+  background: url("/icons/eye.svg") no-repeat center;
 }
 
 @media (max-width: 768px) {
