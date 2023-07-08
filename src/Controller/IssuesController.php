@@ -57,25 +57,13 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 
 	#[Route('/issues')]
 	public function getIssues(
-		string $projectToken,
-		ProjectRepository $projectRepository,
 		TraceRepository $traceRepository
 	): \Symfony\Component\HttpFoundation\Response
 	{
-		$project = $projectRepository->findOneBy(
-			[
-				'token' => $projectToken,
-			]
-		);
-		$issues = $project === null
-			? null
-			: $traceRepository->findBy(
-				['project' => $project]
-			);
+		$issues = $traceRepository->findAll();
 		$issueInfo = [];
-		foreach ($issues ?? [] as $issue)
+		foreach ($issues as $issue)
 		{
-			/** @var  Trace $issue */
 			$issueInfo[] = [
 				'platform' => $issue->platform,
 				'exception' => $issue->exception,
@@ -85,6 +73,12 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 				'serverName' => $issue->serverName,
 				'phpVersion' => $issue->phpVersion,
 				'modules' => $issue->modules,
+				'project' => [
+					'name' => $issue->getProject()->name,
+					'description' => $issue->getProject()->description,
+					'token' => $issue->getProject()->token,
+					'createDateTime' => $issue->getProject()->createDateTime,
+				]
 			];
 		}
 
