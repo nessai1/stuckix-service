@@ -1,7 +1,10 @@
-<script setup>
-import ProjectsList from "../Projects.vue";
+<script>
 
-defineProps(['items']);
+export default {
+  props: {
+    items: Array
+  }
+}
 </script>
 
 <template>

@@ -1,9 +1,13 @@
 <script setup>
+import HeadWrapper from "./components/header/HeadWrapper.vue";
+
 const props = defineProps(['some']);
 </script>
 
 <template>
-  <div>{{props.some}}</div>
+  <HeadWrapper>
+    <div>{{props.some}}</div>
+  </HeadWrapper>
 </template>
 
 <style scoped>

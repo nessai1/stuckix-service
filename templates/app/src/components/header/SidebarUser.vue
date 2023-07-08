@@ -1,18 +1,41 @@
-<script setup>
+<script>
+
+export default {
+  props: {
+    avatar: {
+      required: false,
+      type: String,
+    },
+    email: {
+      required: true,
+      type: String,
+    },
+    name: {
+      required: true,
+      type: String,
+    },
+  },
+}
 
 </script>
 
 <template>
   <div class="projects-sidebar-title-container">
-    <div class="projects-sidebar-title-logo">Logo</div>
+    <div class="sidebar-user">
+      <img class="avatar" width="33" height="33" v-if="$props.avatar" :src="avatar" alt="user avatar">
+      <img class="avatar" width="33" height="33" v-else src="./anonim.jpg">
+    </div>
     <div class="projects-sidebar-title-textblock">
-      <div class="projects-sidebar-title-username">UserName</div>
-      <div class="projects-sidebar-title-email">assdaf@ss.ss</div>
+      <div class="projects-sidebar-title-username">{{ $props.name }}</div>
+      <div class="projects-sidebar-title-email">{{ $props.email }}</div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.sidebar-user {
+  margin-right: 8px;
+}
 .projects-sidebar-title-container {
   display: flex;
   flex-direction: row;
@@ -45,5 +68,9 @@
 
 .projects-sidebar-title-email {
   color: #EBEBEB;
+}
+
+.avatar {
+  border-radius: 5px;
 }
 </style>
