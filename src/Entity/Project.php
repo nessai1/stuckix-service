@@ -31,6 +31,9 @@ class Project
 	#[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
 	private $users;
 
+	#[ORM\OneToMany(mappedBy: 'project', targetEntity: Trace::class)]
+	private $traces;
+
 	#[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, updatable: false)]
 	public \DateTimeImmutable $createDateTime;
 
