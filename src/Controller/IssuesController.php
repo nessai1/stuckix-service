@@ -34,7 +34,7 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 				'platform' => $issue->platform,
 				'exception' => $issue->exception,
 				'eventId' => $issue->eventId,
-				'date' => $issue->clientDate,
+				'exceptionDate' => $issue->clientDate,
 				'query' => $issue->query,
 				'serverName' => $issue->serverName,
 				'phpVersion' => $issue->phpVersion,
