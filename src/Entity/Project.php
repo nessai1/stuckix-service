@@ -24,6 +24,9 @@ class Project
 	#[Assert\Length(min: 36, max: 36)]
 	public string $token;
 
+	#[ORM\Column(type: Types::STRING, length: 200, nullable: true)]
+	public string $description;
+
 	#[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, updatable: false)]
 	public \DateTimeImmutable $createDateTime;
 

@@ -20,10 +20,17 @@ class Project extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControl
 		{
 			return $jsonResponseFactory->createInvalidData();
 		}
+		$description = $json['description'] ?? null;
+
 		$project = new \App\Entity\Project();
 		$project->name = $name;
 		$project->token = (string)Uuid::v4();
 		$project->createDateTime = new \DateTimeImmutable();
+
+		if (is_string($description))
+		{
+			$project->description = $description;
+		}
 
 		try
 		{
