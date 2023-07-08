@@ -14,6 +14,8 @@
 {% block body %}{% endblock %}
 </body>
 <script>
-	window.pageParams = JSON.parse("{{ inlineJs | json_encode() | escape('js') }}");
+	{% if inlineJs is defined %}
+		window.pageParams = JSON.parse("{{ inlineJs | json_encode() | escape('js') }}");
+	{% endif %}
 </script>
 </html>
