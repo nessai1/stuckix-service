@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class User extends AbstractController
 {
@@ -50,50 +49,13 @@ class User extends AbstractController
 			$user->setSurname($surname);
 		}
 
-		$userRepository->save($user, true);
-		$login = $security->login($user);
+		$userId = $userRepository->save($user, true);
 
-		if (!$login->isSuccessful())
+		if ($userId > 0)
 		{
-			return $jsonResponseFactory->createWithStatus(false, errors: ['login' => 'no login']);
+			return $jsonResponseFactory->createWithStatus(true, ['userID' => $userId]);
 		}
 
-		return $jsonResponseFactory->createWithStatus($login->isSuccessful(), $login->getVary());
-	}
-
-	#[Route('/api/v1/login', 'app_user_login', methods: ['POST'])]
-	public function login(Request $request, Security $security, JsonResponseFactory $jsonResponseFactory, UserPasswordHasherInterface $passwordHasher, UserRepository $userRepository): JsonResponse
-	{
-		$json = json_decode($request->getContent(), true);
-		$email = isset($json['email']) ? (string)$json['email'] : '';
-		$password = isset($json['password']) ? (string)$json['password'] : '';
-
-		if ($email === '' || $password === '')
-		{
-			return $jsonResponseFactory->createWithStatus(false, ['validation' => 'not filled required fields']);
-		}
-
-		$user = $userRepository->findOneBy(['email' => $email]);
-
-		if (!($user instanceof \App\Entity\User))
-		{
-			return $jsonResponseFactory->createWithStatus(false, ['validation' => 'not user with this email']);
-		}
-
-		$isValidPassword = $passwordHasher->isPasswordValid($user, $password);
-
-		if (!$isValidPassword)
-		{
-			return $jsonResponseFactory->createWithStatus(false, errors: ['validation' => 'no correct password']);
-		}
-
-		$login = $security->login($user);
-
-		if (!$login->isSuccessful())
-		{
-			return $jsonResponseFactory->createWithStatus(false, errors: ['login' => 'no login']);
-		}
-
-		return $jsonResponseFactory->createWithStatus($login->isSuccessful());
+		return $jsonResponseFactory->createWithStatus(false, errors: ['create' => 'create']);
 	}
 }

@@ -12,6 +12,11 @@ final class ProjectsController extends AbstractController
 	#[Route("/projects", 'app_projects', methods: ['GET'])]
 	public function index(ProjectRepository $projectRepository): Response
 	{
+		if (!$this->getUser())
+		{
+			return $this->redirectToRoute('app_login');
+		}
+
 		$projects = $projectRepository->findAll();
 		$result = [];
 		foreach ($projects as $project)

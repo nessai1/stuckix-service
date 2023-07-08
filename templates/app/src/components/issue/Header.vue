@@ -1,5 +1,5 @@
 <template>
-  <div class="header-container w-full h-min pt-4 pl-10">
+  <div class="header-container w-full h-min">
     <div class="flex text-gray-300">
       <span>Ошибки</span>
       <img src="../../../public/icons/arrow-up-s-line.svg" class="ml-3">

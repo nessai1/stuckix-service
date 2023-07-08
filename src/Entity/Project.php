@@ -28,11 +28,8 @@ class Project
 	#[ORM\Column(type: Types::STRING, length: 200, nullable: true)]
 	public ?string $description = null;
 
-	#[ORM\OneToMany(mappedBy: 'project', targetEntity: Trace::class)]
-	private ArrayCollection $traces;
-
 	#[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
-	private ArrayCollection $users;
+	private $users;
 
 	#[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, updatable: false)]
 	public \DateTimeImmutable $createDateTime;

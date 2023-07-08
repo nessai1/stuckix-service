@@ -24,13 +24,23 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         parent::__construct($registry, User::class);
     }
 
-    public function save(User $entity, bool $flush = false): void
+    public function save(User $entity, bool $flush = false): int
     {
         $this->getEntityManager()->persist($entity);
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+		$manager = $this->getEntityManager();
+		$manager->persist($entity);
+
+		try
+		{
+			$manager->flush();
+
+			return $entity->getId();
+		}
+		catch (\Exception $e)
+		{
+			return 0;
+		}
     }
 
     public function remove(User $entity, bool $flush = false): void

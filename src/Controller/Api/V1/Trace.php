@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
-	#[Route('/api/v1/project/{projectToken}/trace', 'api_project_trace', methods: "GET")]
+	#[Route('/api/v1/project/{projectToken}/trace', 'api_project_trace', methods: "POST")]
 	public function add(
 		string $projectToken,
 		Request $request,
@@ -36,7 +36,7 @@ class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControlle
 			return $jsonResponseFactory->createInvalidData();
 		}
 		$timestamp = $traceContent['timestamp'] ?? null;
-		if (!is_int($timestamp) || !is_float($timestamp))
+		if (!is_int($timestamp) && !is_float($timestamp))
 		{
 			return $jsonResponseFactory->createInvalidData();
 		}
@@ -53,10 +53,11 @@ class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControlle
 
 		$trace = new \App\Entity\Trace();
 		$trace->eventId = $eventId;
-		$trace->clientDate = \DateTimeImmutable::createFromFormat('U', $timestamp, new \DateTimeZone('UTC'));;
+		$trace->clientDate = \DateTimeImmutable::createFromFormat('U', (int)$timestamp, new \DateTimeZone('UTC'));
 		$trace->createDateTime = new \DateTimeImmutable();
 		$trace->platform = $platform;
 		$trace->exception = $exception;
+		$trace->setProject($project);
 
 		try
 		{
