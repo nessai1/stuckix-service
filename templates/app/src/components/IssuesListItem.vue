@@ -16,7 +16,7 @@ function redirectIssue(issue)
       <img
           class="mr-1 inline"
           src="/icons/unsolved-issue.svg"
-          v-if="!issue.solved"
+          v-if="issue.status === 'new'"
       >
       <span class="text-lg text-left font-semibold text-slate-900 mr-2">
         {{issue.title}}

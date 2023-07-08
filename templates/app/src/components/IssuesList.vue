@@ -46,10 +46,10 @@ export default {
       this.issues = this.$props.issues;
     },
     solvedIssues: function () {
-      this.issues = this.$props.issues.filter(issue => issue.solved);
+      this.issues = this.$props.issues.filter(issue => issue.status === 'complete');
     },
     unsolvedIssues: function () {
-      this.issues =  this.$props.issues.filter(issue => !issue.solved);
+      this.issues =  this.$props.issues.filter(issue => issue.status === 'new');
     },
   },
 };
