@@ -17,14 +17,12 @@ export default {
           title: 'Ошибки',
           icon: '/icons/issues.svg',
           path: 'issues.html',
-          active: false,
         },
         {
           id: 'projects',
           title: 'Проекты',
           icon: '/icons/projects.svg',
           path: 'projects.html',
-          active: false,
         },
       ]
     }
