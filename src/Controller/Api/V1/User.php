@@ -42,7 +42,7 @@ class User extends AbstractController
 			$user->setSurname($surname);
 		}
 
-		$userRepository->save($user);
+		$userRepository->save($user, true);
 		$login = $security->login($user);
 
 		if (!$login->isSuccessful())
@@ -85,6 +85,6 @@ class User extends AbstractController
 			return $jsonResponseFactory->createWithStatus(false, errors: ['login' => 'no login']);
 		}
 
-		return $jsonResponseFactory->createWithStatus($login->isSuccessful(), array_merge($login->getVary(), ['email' => $user->getEmail(), 'name' => $user->getName(), 'surname' => $user->getSurname()]));
+		return $jsonResponseFactory->createWithStatus($login->isSuccessful(), $login->getVary());
 	}
 }
