@@ -1,9 +1,17 @@
 <script setup>
 defineProps(['issue']);
+
+function redirectIssue(issue)
+{
+  window.location.href = 'issue.html?id=' + issue.id;
+}
 </script>
 
 <template>
-  <div class="issue-item-container rounded-xl p-4 m-2 w-full">
+  <div
+      class="issue-item-container rounded-xl p-4 m-2 w-full"
+      @click="redirectIssue(issue)"
+  >
     <div class="flex-row text-left">
       <img
           class="mr-1 inline"
@@ -46,5 +54,10 @@ defineProps(['issue']);
 .issue-item-container {
   border: 1px solid #E0E0E0;
   background: #FCFCFC;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+.issue-item-container:hover {
+  background: #f6f6f6;
 }
 </style>
