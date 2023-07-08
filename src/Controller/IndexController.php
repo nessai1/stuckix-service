@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class IndexController extends AbstractController
 {
-	#[Route("/1", 'app_index', methods: ['GET'])]
+	#[Route("/", 'app_index', methods: ['GET'])]
 	public function index(): Response
 	{
 		return $this->render('index.html.twig');
