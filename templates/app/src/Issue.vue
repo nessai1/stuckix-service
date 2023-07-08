@@ -6,7 +6,7 @@ const props = defineProps(['some']);
 </script>
 
 <template>
-  <HeadWrapper id="errors">
+  <HeadWrapper id="issues">
     <IssueComponent />
   </HeadWrapper>
 </template>
