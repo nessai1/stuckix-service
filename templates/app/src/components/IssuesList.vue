@@ -8,7 +8,7 @@ const props = defineProps(['issues', 'solvedCount', 'unsolvedCount']);
 
 <template>
   <div class="issues-list-container" v-if="props.issues.length">
-    <div class="font-semibold text-slate-900 text-4xl text-left m-10">Ошибки</div>
+    <div class="font-semibold text-slate-900 text-4xl text-left ml-2 mb-6">Ошибки</div>
     <div class="issues-buttons">
       <div class="issues-button-container issues-button-container-all" @click="allIssues">
         <div class="issues-button-solved-text">Все</div>

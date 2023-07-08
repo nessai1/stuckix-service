@@ -1,6 +1,7 @@
 <template>
   <div class="header-container w-full h-min">
     <div class="flex text-gray-300">
+      <img class="menu-button mr-3" src="../../../public/icons/menu-3-line.svg">
       <span>Ошибки</span>
       <img src="../../../public/icons/arrow-up-s-line.svg" class="ml-3">
       <img src="../../../public/icons/folder-5-fill.svg" class="ml-3">
@@ -25,5 +26,11 @@
 .red-dot{
   height: 10px;
   width: 10px;
+}
+
+@media (min-width: 768px) {
+  .menu-button{
+    display: none;
+  }
 }
 </style>
