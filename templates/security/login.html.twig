@@ -14,6 +14,12 @@
     window.auth_csrf = '{{ csrf_token('authenticate') }}';
 {% endblock %}
 
+{% block body %}
+    <div style="width: 100vw; height: 100vh; background-color: #CDCDCD; padding: 150px" class="flex justify-center">
+        <div id="app"></div>
+    </div>
+{% endblock %}
+
 {% block title %}Log in!{% endblock %}
 
 {#{% block body %}#}
