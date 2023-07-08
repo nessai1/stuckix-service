@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
-	#[Route('api/v1/project/{projectToken}/trace', 'api_project_trace', methods: "GET")]
+	#[Route('/api/v1/project/{projectToken}/trace', 'api_project_trace', methods: "GET")]
 	public function add(
 		string $projectToken,
 		Request $request,
