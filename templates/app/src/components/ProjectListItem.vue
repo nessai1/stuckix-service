@@ -1,14 +1,15 @@
 <script setup>
 
+defineProps(['project']);
 </script>
 
 <template>
-<div class="border-blue-300">
-  <div class="flex-auto text-lg font-semibold text-slate-900">
-    ProjectTitle
+<div class="border-blue-300 border-2 rounded-xl p-4 m-2 w-full">
+  <div class="text-lg text-left font-semibold text-slate-900">
+    {{project.title}}
   </div>
-  <div class="flex-auto text-lg font-semibold text-slate-900">
-    ProjectDesc
+  <div class="text-left text-lg text-slate-900">
+    {{project.description}}
   </div>
 </div>
 </template>

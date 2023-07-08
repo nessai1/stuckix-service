@@ -1,7 +1,7 @@
 <script setup>
 import ProjectsList from "../Projects.vue";
 
-defineProps(['items'])
+defineProps(['items']);
 </script>
 
 <template>

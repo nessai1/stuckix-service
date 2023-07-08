@@ -2,6 +2,19 @@
 
 import ProjectsSidebar from "./components/ProjectsSidebar.vue";
 import ProjectsList from "./components/ProjectsList.vue";
+
+const projects = [
+  {
+    id: 1,
+    title: 'First project',
+    description: 'prkdsfgsdpjfdsjg opsdj vs  sdopsdjv ',
+  },
+  {
+    id: 2,
+    title: 'second project',
+    description: 'prkdsfgsdpjfdsjg opsdj vs  sdopsdjv ',
+  },
+]
 </script>
 
 <template>
@@ -9,14 +22,8 @@ import ProjectsList from "./components/ProjectsList.vue";
     <div class="projects-sidebar">
       <ProjectsSidebar></ProjectsSidebar>
     </div>
-    <div class="">
-      <ProjectsList></ProjectsList>
-    </div>
+    <ProjectsList :projects="projects"></ProjectsList>
   </div>
-
-
-
-<div class="projects-title bg-white space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6">Проекты</div>
 </template>
 
 <style scoped>
