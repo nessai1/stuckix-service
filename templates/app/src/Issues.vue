@@ -1,7 +1,8 @@
 <script setup>
 
 import IssuesList from "./components/IssuesList.vue";
-import ProjectsSidebar from "./components/ProjectsSidebar.vue";
+import HeadWrapper from "./components/header/HeadWrapper.vue";
+import ProjectsList from "./components/ProjectsList.vue";
 
 const issues = [
   {
@@ -41,18 +42,11 @@ const issues = [
 </script>
 
 <template>
-  <div class="projects-container">
-    <ProjectsSidebar></ProjectsSidebar>
+  <HeadWrapper id="projects">
     <IssuesList :issues="issues" :solved-count="12" :unsolved-count="10"></IssuesList>
-  </div>
+  </HeadWrapper>
 </template>
 
 <style scoped>
-.projects-container {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  width: 100vw;
-  height: 100vh;
-}
+
 </style>
