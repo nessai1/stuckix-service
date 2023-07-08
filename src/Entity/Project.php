@@ -29,7 +29,6 @@ class Project
 	#[ORM\Column(type: Types::STRING, length: 200, nullable: true)]
 	public ?string $description = null;
 
-	#[ORM\OneToMany(mappedBy: 'projectsUsers', targetEntity: ProjectUser::class)]
 	private Collection $projectsUsers;
 
 	#[ORM\OneToMany(mappedBy: 'project', targetEntity: Trace::class)]
@@ -51,7 +50,22 @@ class Project
 
 	public function getUsers(): ArrayCollection
 	{
-		return $this->users;
+		$users = new ArrayCollection();
+
+		foreach ($this->projectsUsers as $projectUser)
+		{
+			if ($projectUser instanceof ProjectUser)
+			{
+				$users->add($projectUser->getUser());
+			}
+		}
+
+		return $users;
+	}
+
+	public function getProjectsUsers(): ArrayCollection
+	{
+		return $this->projectsUsers;
 	}
 	
 	public function addUser(User $user, ?string $path = null): void
