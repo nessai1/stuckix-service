@@ -45,6 +45,9 @@ class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControlle
 		{
 			return $jsonResponseFactory->createInvalidData();
 		}
+		$serverName = $traceContent['server_name'] ?? null;
+		$modules = $traceContent['modules'] ?? null;
+		$contexts = $traceContent['contexts'] ?? null;
 		$exception = $traceContent['exception']['values'][0] ?? null;
 		if (!is_array($exception))
 		{
@@ -57,6 +60,10 @@ class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControlle
 		$trace->createDateTime = new \DateTimeImmutable();
 		$trace->platform = $platform;
 		$trace->exception = $exception;
+		$trace->serverName = $serverName;
+		$trace->query = $contexts['query'] ?? [];
+		$trace->phpVersion = $contexts['phpversion'] ?? null;
+		$trace->modules = $modules;
 		$trace->setProject($project);
 
 		try

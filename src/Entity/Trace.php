@@ -17,7 +17,16 @@ class Trace
 	private int $id;
 
 	#[ORM\Column(type: Types::JSON, nullable: false)]
-	public array $exception;
+	public array $exception = [];
+
+	#[ORM\Column(type: Types::JSON, nullable: true)]
+	public array $modules = [];
+	#[ORM\Column(type: Types::JSON, nullable: true)]
+	public array $query = [];
+	#[ORM\Column(type: Types::STRING, length: 255, nullable: true, updatable: false)]
+	public ?string $serverName = null;
+	#[ORM\Column(type: Types::STRING, length: 50, nullable: true, updatable: false)]
+	public ?string $phpVersion = null;
 
 	#[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'traces')]
 	private Project $project;
@@ -39,7 +48,6 @@ class Trace
 	{
 		return $this->id;
 	}
-
 
 	public function getProject(): Project
 	{

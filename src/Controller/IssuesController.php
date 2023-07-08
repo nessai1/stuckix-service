@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
-		#[Route('/project/{projectToken}/issues')]
+	#[Route('/project/{projectToken}/issues')]
 	public function getProjectIssues(
 		string $projectToken,
 		ProjectRepository $projectRepository,
@@ -25,8 +25,7 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 			? null
 			: $traceRepository->findOneBy(
 				['project' => $project]
-			)
-		;
+			);
 		$issueInfo = [];
 		foreach ($issues ?? [] as $issue)
 		{
@@ -36,12 +35,20 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 				'exception' => $issue->exception,
 				'eventId' => $issue->eventId,
 				'date' => $issue->clientDate,
+				'query' => $issue->query,
+				'serverName' => $issue->serverName,
+				'phpVersion' => $issue->phpVersion,
+				'modules' => $issue->modules,
 			];
 		}
-		return $this->render('issues.html.twig', [
-			'inlineJs' => [
-				'issues' => $issueInfo,
+
+		return $this->render(
+			'issues.html.twig',
+			[
+				'inlineJs' => [
+					'issues' => $issueInfo,
+				],
 			]
-		]);
+		);
 	}
 }
