@@ -26,7 +26,7 @@ defineProps(['projects']);
 }
 
 .project-list-title {
-  color: var(--gray-02100, #0A0A0A);
+  color: #0A0A0A;
   font-size: 32px;
   font-style: normal;
   font-weight: 500;
