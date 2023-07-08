@@ -42,6 +42,7 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 				'serverName' => $issue->serverName,
 				'phpVersion' => $issue->phpVersion,
 				'modules' => $issue->modules,
+				'status' => $issue->status,
 			];
 		}
 
@@ -73,6 +74,7 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 				'serverName' => $issue->serverName,
 				'phpVersion' => $issue->phpVersion,
 				'modules' => $issue->modules,
+				'status' => $issue->status,
 				'project' => [
 					'name' => $issue->getProject()->name,
 					'description' => $issue->getProject()->description,
@@ -112,6 +114,7 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 			'serverName' => $issue->serverName,
 			'phpVersion' => $issue->phpVersion,
 			'modules' => $issue->modules,
+			'status' => $issue->status,
 		];
 
 		return $this->render(
