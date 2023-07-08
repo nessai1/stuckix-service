@@ -31,7 +31,9 @@ final class ProjectsController extends AbstractController
 		return $this->render(
 			'projects.html.twig',
 			[
-				'inlineJs' => $result,
+				'inlineJs' => [
+					'projects' => $result
+				],
 			]
 		);
 	}

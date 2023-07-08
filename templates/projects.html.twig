@@ -3,6 +3,10 @@
 {% block stylesheets %}
 
 {% endblock %}
-
+	{% block js %}
+		<script>
+			window.pageParams = JSON.parse("{{ inlineJs | json_encode() | escape('js') }}");
+		</script>
+	{% endblock %}
 {% block javascripts %}
 {% endblock %}
