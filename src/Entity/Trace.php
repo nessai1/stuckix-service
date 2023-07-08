@@ -17,22 +17,29 @@ class Trace
 	private int $id;
 
 	#[ORM\Column(type: Types::JSON, nullable: false)]
-	public array $trace;
+	public array $exception;
 
 	#[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'traces')]
 	private Project $project;
 
+	#[ORM\Column(type: Types::STRING, length: 25, updatable: false)]
+	public string $platform;
+
 	#[ORM\Column(type: Types::STRING, length: 36, unique: true)]
 	#[Assert\Length(min: 36, max: 36)]
-	public string $token;
+	public string $eventId;
 
 	#[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, updatable: false)]
 	public \DateTimeImmutable $createDateTime;
+
+	#[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, updatable: false)]
+	public \DateTimeImmutable $clientDate;
 
 	public function getId(): int
 	{
 		return $this->id;
 	}
+
 
 	public function getProject(): Project
 	{
