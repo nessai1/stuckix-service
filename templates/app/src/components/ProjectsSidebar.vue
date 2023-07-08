@@ -8,7 +8,7 @@ const itemList = [
     id: 'errors',
     title: 'Ошибки',
     icon: '/icons/error.svg',
-    path: 'errors.html',
+    path: 'issues.html',
     active: false,
   },
   {
@@ -16,18 +16,24 @@ const itemList = [
     title: 'Проекты',
     icon: '/icons/projects.svg',
     path: 'projects.html',
-    active: true,
+    active: false,
   },
 ];
 </script>
 
 <template>
-  <sidebar-user></sidebar-user>
-  <sidebar-item-list :items=itemList></sidebar-item-list>
+  <div class="projects-sidebar">
+    <sidebar-user></sidebar-user>
+    <sidebar-item-list :items=itemList></sidebar-item-list>
+  </div>
 </template>
 
 <style scoped>
 
-
+.projects-sidebar {
+  width: 20%;
+  height: 100%;
+  background: #189FCA;
+}
 
 </style>

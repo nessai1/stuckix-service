@@ -19,9 +19,7 @@ const projects = [
 
 <template>
   <div class="projects-container">
-    <div class="projects-sidebar">
-      <ProjectsSidebar></ProjectsSidebar>
-    </div>
+    <ProjectsSidebar></ProjectsSidebar>
     <ProjectsList :projects="projects"></ProjectsList>
   </div>
 </template>
@@ -34,12 +32,6 @@ const projects = [
   flex: 1;
   width: 100vw;
   height: 100vh;
-}
-
-.projects-sidebar {
-  width: 20%;
-  height: 100%;
-  background: #189FCA;
 }
 
 
