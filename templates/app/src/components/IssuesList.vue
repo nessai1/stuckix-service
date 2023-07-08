@@ -1,12 +1,13 @@
 <script setup>
 
 import IssuesListItem from "./IssuesListItem.vue";
+import IssuesEmptyState from "./empty-states/Issues.vue";
 const props = defineProps(['issues', 'solvedCount', 'unsolvedCount']);
 
 </script>
 
 <template>
-  <div class="issues-list-container">
+  <div class="issues-list-container" v-if="props.issues.length">
     <div class="font-semibold text-slate-900 text-4xl text-left m-10">Ошибки</div>
     <div class="issues-buttons">
       <div class="issues-button-container issues-button-container-all" @click="allIssues">
@@ -30,6 +31,7 @@ const props = defineProps(['issues', 'solvedCount', 'unsolvedCount']);
         :issue="issue"
     ></IssuesListItem>
   </div>
+  <IssuesEmptyState v-else/>
 </template>
 
 <script>
