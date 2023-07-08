@@ -33,7 +33,7 @@
 
         <footer class="flex justify-between">
           <button type="submit" class="sign-button rounded font-semibold text-white">
-            Button
+            Авторизоваться
           </button>
           <a class="grid content-center forget-password">
             Забыли пароль?
