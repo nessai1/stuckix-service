@@ -8,7 +8,7 @@ function redirectIssue(issue)
 
 function getPath(issue)
 {
-  return issue.exception.stacktrace.contexts.pop().filename;
+  return issue.exception.stacktrace.contexts.pop().abs_path;
 }
 
 function getErrorLine(issue)
