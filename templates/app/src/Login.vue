@@ -1,5 +1,5 @@
 <script setup>
-
+const props = defineProps(['csrf'])
 </script>
 
 <template>
@@ -10,23 +10,24 @@
         Название
       </header>
 
-      <form action="" method="">
+      <form method="post">
+        <input type="hidden" name="_csrf_token" :value="props.csrf">
         <div class="flex flex-col pt-2 w-min">
           Регистрация
           <div class="border-2 mt-1 rounded border-sky-400"/>
         </div>
         <div class="flex flex-col pt-2 pb-3">
           <label class="flex py-2">
-            Логин
+            E-mail
           </label>
-          <input type="text" name="" id="" placeholder="Login" class="border border-gray-300 rounded pl-3 py-1">
+          <input type="text" name="email" id="" placeholder="Email" class="border border-gray-300 rounded pl-3 py-1">
 
           <label class="flex py-2">
             Пароль
           </label>
           <div class="input border border-gray-300 rounded flex justify-between">
-            <input v-if="showPassword" type="text" v-model="password" placeholder="Password" class="pl-3 py-1 w-full">
-            <input v-else type="password" v-model="password" placeholder="Password" class="pl-3 py-1 w-full">
+            <input name="password" v-if="showPassword" type="text" v-model="password" placeholder="Password" class="pl-3 py-1 w-full">
+            <input name="password" v-else type="password" v-model="password" placeholder="Password" class="pl-3 py-1 w-full">
             <button class="eye-button rounded" type="button" @click="toggleShow"></button>
           </div>
         </div>
