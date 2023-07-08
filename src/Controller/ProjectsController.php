@@ -23,8 +23,14 @@ final class ProjectsController extends AbstractController
 		{
 			$result[] = [
 				'name' => $project->name,
+				'type' => 'php',
+				'id' => $project->getId(),
+				'title' => $project->name,
+				'issuesCount' => 1,
 				'description' => $project->description,
 				'token' => $project->token,
+				'projectPath' => '/var/www/html/',
+				'expanded' => false,
 			];
 		}
 
