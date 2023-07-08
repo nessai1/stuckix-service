@@ -16,4 +16,15 @@ class JsonResponseFactory
 			]
 		);
 	}
+
+	public function createInvalidData(): JsonResponse
+	{
+		return new JsonResponse(
+			[
+				'errors' => [
+					'reason' => 'Invalid data'
+				]
+			]
+		);
+	}
 }

@@ -20,7 +20,7 @@ class Project
 	#[Assert\Length(min: 2, max: 50)]
 	public string $name;
 
-	#[ORM\Column(type: Types::STRING, length: 32, unique: true)]
+	#[ORM\Column(type: Types::STRING, length: 36, unique: true)]
 	#[Assert\Length(min: 36, max: 36)]
 	public string $token;
 
