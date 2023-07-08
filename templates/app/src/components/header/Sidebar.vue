@@ -13,9 +13,9 @@ export default {
     return {
       itemsList: [
         {
-          id: 'errors',
+          id: 'issues',
           title: 'Ошибки',
-          icon: '/icons/error.svg',
+          icon: '/icons/issues.svg',
           path: 'issues.html',
           active: false,
         },

@@ -6,7 +6,7 @@ const props = defineProps(['issues']);
 </script>
 
 <template>
-  <HeadWrapper id="projects">
+  <HeadWrapper id="issues">
     <IssuesList :issues="props.issues" :solved-count="12" :unsolved-count="10"></IssuesList>
   </HeadWrapper>
 </template>
