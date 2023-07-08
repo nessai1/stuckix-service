@@ -3,24 +3,6 @@
 import SidebarUser from "./SidebarUser.vue";
 import SidebarItemList from "./SidebarItemList.vue";
 
-const itemList = [
-  {
-    id: 'errors',
-    title: 'Ошибки',
-    icon: '/icons/error.svg',
-    path: 'issues.html',
-    active: false,
-  },
-  {
-    id: 'projects',
-    title: 'Проекты',
-    icon: '/icons/projects.svg',
-    path: 'projects.html',
-    active: false,
-  },
-];
-
-
 export default {
   components: {SidebarItemList, SidebarUser},
   props: {
@@ -53,7 +35,7 @@ export default {
 <template>
   <div class="projects-sidebar">
     <SidebarUser :name="user.name" :email="user.email"></SidebarUser>
-    <SidebarItemList :items=itemsList></SidebarItemList>
+    <SidebarItemList :id="id" :items=itemsList></SidebarItemList>
   </div>
 </template>
 

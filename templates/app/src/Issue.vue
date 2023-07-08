@@ -5,8 +5,8 @@ const props = defineProps(['some']);
 </script>
 
 <template>
-  <HeadWrapper>
-    <div>{{props.some}}</div>
+  <HeadWrapper id="errors">
+    123
   </HeadWrapper>
 </template>
 

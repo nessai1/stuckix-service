@@ -2,7 +2,8 @@
 
 export default {
   props: {
-    items: Array
+    items: Array,
+    id: String
   }
 }
 </script>
@@ -12,7 +13,7 @@ export default {
     <a
         class="sidebar-item"
         :href="item.path"
-        :class="[item.active ? 'sidebar-item-active' : '']"
+        :class="[item.id === $props.id ? 'sidebar-item-active' : '']"
         v-for="item in items"
         :key="item.id"
     >
