@@ -3,7 +3,7 @@ const props = defineProps(['csrf'])
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl shadow container grid content-between">
+  <div class="bg-white rounded-2xl shadow container grid content-between dark:text-black">
     <div class="p-4">
       <header class="flex">
         <img class="logo"  src="../public/icons/Logo.png">
@@ -27,8 +27,8 @@ const props = defineProps(['csrf'])
               Пароль
             </label>
             <div class="input border border-gray-300 rounded flex justify-between">
-              <input name="password" v-if="showPassword" type="text" v-model="password" placeholder="Пароль" class="pl-3 w-full py-2">
-              <input name="password" v-else type="password" v-model="password" placeholder="Пароль" class="pl-3 w-full py-2">
+              <input name="password" v-if="showPassword" type="text" v-model="password" placeholder="Пароль" class="pl-3 w-full py-2 dark:bg-white">
+              <input name="password" v-else type="password" v-model="password" placeholder="Пароль" class="pl-3 w-full py-2 dark:bg-white">
               <button class="eye-button rounded" type="button" @click="toggleShow"></button>
             </div>
           </div>
@@ -36,7 +36,7 @@ const props = defineProps(['csrf'])
 
         <footer class="flex justify-between mt-6">
           <button type="submit" class="sign-button rounded font-normal text-white">
-            Зарегестрироваться
+            Зарегистрироваться
           </button>
         </footer>
       </form>
@@ -47,6 +47,11 @@ const props = defineProps(['csrf'])
 <style scoped>
 .container{
   width: 550px;
+}
+
+.logo{
+  max-width: 50px;
+  max-height: 50px;
 }
 
 .sign-button{
@@ -60,6 +65,42 @@ const props = defineProps(['csrf'])
 
 .eye-button{
   background: url("../public/icons/eye.svg") no-repeat center;
+}
+
+@media (max-width: 768px) {
+  .container{
+    margin-top: 50px;
+    width: 100vw !important;
+    height: 100vh !important;
+    box-shadow: none;
+  }
+  header{
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-title{
+    margin-left: 0;
+    margin-top: 30px;
+    width: 164px;
+    height: 30px;
+  }
+  .logo{
+    max-width: 93px;
+    max-height: 93px;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  footer{
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .menu-button{
+
+  }
 }
 </style>
 

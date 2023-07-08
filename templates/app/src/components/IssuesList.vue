@@ -3,12 +3,13 @@
 import IssuesListItem from "./IssuesListItem.vue";
 import IssuesEmptyState from "./empty-states/Issues.vue";
 const props = defineProps(['issues', 'solvedCount', 'unsolvedCount']);
+console.log(props.issues);
 
 </script>
 
 <template>
   <div class="issues-list-container" v-if="props.issues.length">
-    <div class="font-semibold text-slate-900 text-4xl text-left m-10">Ошибки</div>
+    <div class="font-semibold text-slate-900 text-4xl text-left ml-2 mb-6">Ошибки</div>
     <div class="issues-buttons">
       <div class="issues-button-container issues-button-container-all" @click="allIssues">
         <div class="issues-button-solved-text">Все</div>
@@ -27,7 +28,7 @@ const props = defineProps(['issues', 'solvedCount', 'unsolvedCount']);
     </div>
     <IssuesListItem
         v-for="issue in this.issues"
-        :key="issue.id"
+        :key="issue.eventId"
         :issue="issue"
     ></IssuesListItem>
   </div>
@@ -46,10 +47,10 @@ export default {
       this.issues = this.$props.issues;
     },
     solvedIssues: function () {
-      this.issues = this.$props.issues.filter(issue => issue.solved);
+      this.issues = this.$props.issues.filter(issue => issue.status === 'complete');
     },
     unsolvedIssues: function () {
-      this.issues =  this.$props.issues.filter(issue => !issue.solved);
+      this.issues =  this.$props.issues.filter(issue => issue.status === 'new');
     },
   },
 };

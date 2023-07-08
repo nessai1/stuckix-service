@@ -29,13 +29,7 @@ class Project
 	#[ORM\Column(type: Types::STRING, length: 200, nullable: true)]
 	public ?string $description = null;
 
-	#[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'project')]
-	#[ORM\JoinTable(
-		name: 'project_user',
-		joinColumns: [new ORM\JoinColumn(name: 'project_id', referencedColumnName: 'id')],
-		inverseJoinColumns: [new ORM\InverseJoinColumn(name: 'user_id', referencedColumnName: 'id')]
-	)]
-	private Collection $users;
+	private Collection $projectsUsers;
 
 	#[ORM\OneToMany(mappedBy: 'project', targetEntity: Trace::class)]
 	private $traces;
@@ -46,7 +40,7 @@ class Project
 	public function __construct()
 	{
 		$this->traces = new ArrayCollection();
-		$this->users = new ArrayCollection();
+		$this->projectsUsers = new ArrayCollection();
 	}
 
 	public function getId(): int
@@ -56,12 +50,50 @@ class Project
 
 	public function getUsers(): ArrayCollection
 	{
-		return $this->users;
+		$users = new ArrayCollection();
+
+		foreach ($this->projectsUsers as $projectUser)
+		{
+			if ($projectUser instanceof ProjectUser)
+			{
+				$users->add($projectUser->getUser());
+			}
+		}
+
+		return $users;
+	}
+
+	public function getProjectsUsers(): ArrayCollection
+	{
+		return $this->projectsUsers;
 	}
 	
-	public function addUser(User $user): void
+	public function addUser(User $user, ?string $path = null): void
 	{
-		$this->users->add($user);
+		$available = true;
+
+		foreach ($this->projectsUsers as $projectUser)
+		{
+			if ($projectUser instanceof ProjectUser)
+			{
+				if ($projectUser->getUser() === $user && $projectUser->getProject() === $this)
+				{
+					$available = false;
+				}
+			}
+		}
+
+		if ($available)
+		{
+			$projectUser = (new ProjectUser())->setProject($this)->setUser($user);
+
+			if ($path)
+			{
+				$projectUser->setPath($path);
+			}
+
+			$this->projectsUsers->add($projectUser);
+		}
 	}
 
 	public function getTraces(): ArrayCollection

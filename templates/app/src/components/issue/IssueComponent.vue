@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-5 text-left">
+  <div class="w-full p-5 text-left dark:bg-white">
     <Header />
     <br>
     <br>
