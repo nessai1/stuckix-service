@@ -10,7 +10,11 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				login: resolve(__dirname, 'login.html'),
-				projects: resolve(__dirname, 'projects.html')
+				projects: resolve(__dirname, 'projects.html'),
+				index: resolve(__dirname, 'index.html'),
+				issues: resolve(__dirname, 'issues.html'),
+				issue: resolve(__dirname, 'issue.html'),
+				projectAdd: resolve(__dirname, 'projectAdd.html'),
 			},
 			output: {
 				entryFileNames: '[name].js', // Имя файла без хеша для каждого входного файла
