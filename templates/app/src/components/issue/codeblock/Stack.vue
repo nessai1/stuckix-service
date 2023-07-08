@@ -6,7 +6,7 @@
       <SelectTrace row="12" file="E:\hrtoolkit\vendor\laravel\framework\src\illuminateadadasdasdasd" />
     </ul>
     <div class="w-full code">
-      code
+      <Code />
     </div>
   </div>
 </template>
@@ -24,4 +24,5 @@
 </style>
 <script setup>
 import SelectTrace from "./SelectTrace.vue";
+import Code from "./Code.vue";
 </script>
