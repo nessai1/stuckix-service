@@ -23,7 +23,7 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 		);
 		$issues = $project === null
 			? null
-			: $traceRepository->findOneBy(
+			: $traceRepository->findBy(
 				['project' => $project]
 			);
 		$issueInfo = [];
@@ -51,4 +51,37 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 			]
 		);
 	}
+
+	#[Route('/issues/{issueId}', methods: 'GET')]
+	public function getIssue(
+		string $issueId,
+		TraceRepository $traceRepository
+	): \Symfony\Component\HttpFoundation\Response
+	{
+		$issue = $traceRepository->findOneBy(
+			[
+				'eventId' => $issueId,
+			]
+		);
+		$issueInfo = $issue === null ? null : [
+			'platform' => $issue->platform,
+			'exception' => $issue->exception,
+			'eventId' => $issue->eventId,
+			'exceptionDate' => $issue->clientDate,
+			'query' => $issue->query,
+			'serverName' => $issue->serverName,
+			'phpVersion' => $issue->phpVersion,
+			'modules' => $issue->modules,
+		];
+
+		return $this->render(
+			'issue.html.twig',
+			[
+				'inlineJs' => [
+					'issues' => $issueInfo,
+				],
+			]
+		);
+	}
+
 }
