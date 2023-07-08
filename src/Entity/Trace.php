@@ -20,9 +20,9 @@ class Trace
 	public array $exception = [];
 
 	#[ORM\Column(type: Types::JSON, nullable: true)]
-	public array $modules = [];
+	public ?array $modules = null;
 	#[ORM\Column(type: Types::JSON, nullable: true)]
-	public array $query = [];
+	public ?array $query = null;
 	#[ORM\Column(type: Types::STRING, length: 255, nullable: true, updatable: false)]
 	public ?string $serverName = null;
 	#[ORM\Column(type: Types::STRING, length: 50, nullable: true, updatable: false)]
