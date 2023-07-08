@@ -6,15 +6,15 @@ const props = defineProps(['csrf'])
   <div class="bg-white rounded-2xl shadow container grid content-between dark:text-black">
     <div class="p-4">
       <header class="flex">
-        <img class="logo"  src="../public/icons/Logo.png">
-        <img class="logo-title ml-3" src="../public/icons/Stuckix.svg">
+        <img class="logo"  src="/icons/Logo.png">
+        <img class="logo-title ml-3" src="/icons/Stuckix.svg">
       </header>
 
       <form method="post">
         <input type="hidden" name="_csrf_token" :value="props.csrf">
         <div>
           <div class="flex flex-col pt-2 w-min">
-            Регистрация
+            Авторизация
             <div class="border-2 mt-1 rounded border-sky-400"/>
           </div>
           <div class="flex flex-col pt-2 pb-3">
@@ -36,7 +36,7 @@ const props = defineProps(['csrf'])
 
         <footer class="flex justify-between mt-6">
           <button type="submit" class="sign-button rounded font-normal text-white">
-            Зарегистрироваться
+            Войти
           </button>
         </footer>
       </form>
