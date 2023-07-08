@@ -12,6 +12,8 @@
 	{% if inlineJs is defined %}
 	window.pageParams = JSON.parse("{{ inlineJs | json_encode() | escape('js') }}");
 	{% endif %}
+	{% block js %}
+	{% endblock %}
 </script>
 {% block body %}
 	<div id="app"></div>
