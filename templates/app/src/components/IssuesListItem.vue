@@ -13,7 +13,6 @@ function getPath(issue)
 
 function getErrorLine(issue)
 {
-  console.log(issue.exception.stacktrace);
   return issue.exception.stacktrace.contexts.pop().line_number;
 }
 </script>
@@ -52,7 +51,6 @@ function getErrorLine(issue)
         {{issue.exceptionDate.date}}
       </span>
     </div>
-
   </div>
 </template>
 
