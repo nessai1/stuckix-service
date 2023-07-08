@@ -17,6 +17,15 @@ class JsonResponseFactory
 		);
 	}
 
+	public function createWithStatus(bool $isSuccess, array $data = [], array $errors = []): JsonResponse
+	{
+		return (new JsonResponse())->setData([
+				'isSuccess' => $isSuccess,
+				'data' => $data,
+				'errors' => $errors
+		]);
+	}
+
 	public function createInvalidData(): JsonResponse
 	{
 		return new JsonResponse(
