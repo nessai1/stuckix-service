@@ -1,7 +1,8 @@
 <script setup>
 
 import IssuesList from "./components/IssuesList.vue";
-import ProjectsSidebar from "./components/ProjectsSidebar.vue";
+import HeadWrapper from "./components/header/HeadWrapper.vue";
+import ProjectsList from "./components/ProjectsList.vue";
 
 const issues = [
   {
@@ -10,7 +11,7 @@ const issues = [
     errorFile: '/iblock/admin.php',
     errorLine: 392,
     description: 'sd fdsf dsf   dsf dsf sd f fsdfsd sd fdsf dsf   dsf dsf sd f fsdfs sd fdsf dsf   dsf dsf sd f fsdfs',
-    projectName: 'Project 1',
+    projectName: 'Project 2',
     time: '24 June 2012 14:24:55',
     commentsCount: 12,
     solved: false,
@@ -21,7 +22,7 @@ const issues = [
     errorFile: '/iblock/admin.php',
     errorLine: 39244,
     description: 'sd fdsf dsf   dsf dsf sd f fsdfsd sd fdsf dsf   dsf dsf sd f fsdfs sd fdsf dsf   dsf dsf sd f fsdfs',
-    projectName: 'Project 1',
+    projectName: 'Project 5',
     time: '24 June 2012 14:24:55',
     commentsCount: 0,
     solved: false,
@@ -32,7 +33,7 @@ const issues = [
     errorFile: '/iblock/admin.php',
     errorLine: 436,
     description: 'sd fdsf dsf   dsf dsf sd f fsdfsd sd fdsf dsf   dsf dsf sd f fsdfs sd fdsf dsf   dsf dsf sd f fsdfs',
-    projectName: 'Project 1',
+    projectName: 'Profsdf ',
     time: '26 June 2012 14:24:55',
     commentsCount: 6,
     solved: false,
@@ -41,18 +42,11 @@ const issues = [
 </script>
 
 <template>
-  <div class="projects-container">
-    <ProjectsSidebar></ProjectsSidebar>
-    <IssuesList :issues="issues"></IssuesList>
-  </div>
+  <HeadWrapper id="projects">
+    <IssuesList :issues="issues" :solved-count="12" :unsolved-count="10"></IssuesList>
+  </HeadWrapper>
 </template>
 
 <style scoped>
-.projects-container {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  width: 100vw;
-  height: 100vh;
-}
+
 </style>

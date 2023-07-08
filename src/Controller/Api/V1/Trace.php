@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Trace extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
-	#[Route('api/v1/trace', 'api_trace', methods: "POST")]
+	#[Route('api/v1/project/{projectUuid}/trace', 'api_project_trace', methods: "POST")]
 	public function add(Request $request, JsonResponseFactory $jsonResponseFactory): \Symfony\Component\HttpFoundation\JsonResponse
 	{
 		return $jsonResponseFactory->createNotImplemented();
