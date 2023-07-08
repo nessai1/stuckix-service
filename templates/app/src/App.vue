@@ -6,6 +6,9 @@ import HelloWorld from './components/HelloWorld.vue'
   <div>
     <div class="bg-slate-200" style="height: 300px; width: 300px"></div>
   </div>
+  <a href="login.html">LOGIN PAGE</a>
+  <br>
+  <a href="projects.html">PROJECTS PAGE</a>
   <HelloWorld msg="Vite + Vue" />
 </template>
 
