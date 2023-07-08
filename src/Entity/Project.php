@@ -16,11 +16,11 @@ class Project
 	#[ORM\Column(type: Types::INTEGER)]
 	private int $id;
 
-	#[ORM\Column(type: Types::STRING, length: 50)]
+	#[ORM\Column(type: Types::STRING, length: 50, unique: true)]
 	#[Assert\Length(min: 2, max: 50)]
 	public string $name;
 
-	#[ORM\Column(type: Types::STRING, length: 32)]
+	#[ORM\Column(type: Types::STRING, length: 32, unique: true)]
 	#[Assert\Length(min: 36, max: 36)]
 	public string $token;
 
