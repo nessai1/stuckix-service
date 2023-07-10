@@ -16,13 +16,13 @@ export default {
           id: 'issues',
           title: 'Ошибки',
           icon: '/icons/issues.svg',
-          path: 'issues.html',
+          path: '/issues',
         },
         {
           id: 'projects',
           title: 'Проекты',
           icon: '/icons/projects.svg',
-          path: 'projects.html',
+          path: '/projects',
         },
       ]
     }

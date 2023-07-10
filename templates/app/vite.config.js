@@ -12,9 +12,9 @@ export default defineConfig({
 			input: {
 				login: resolve(__dirname, 'login.html'),
 				projects: resolve(__dirname, 'projects.html'),
+				issue: resolve(__dirname, 'issue.html'),
 				index: resolve(__dirname, 'index.html'),
 				issues: resolve(__dirname, 'issues.html'),
-				issue: resolve(__dirname, 'issue.html'),
 				projectAdd: resolve(__dirname, 'projectAdd.html'),
 			},
 			output: {

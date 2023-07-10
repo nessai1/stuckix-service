@@ -33,7 +33,8 @@ class JsonResponseFactory
 				'errors' => [
 					'reason' => 'Invalid data'
 				]
-			]
+			],
+			JsonResponse::HTTP_BAD_REQUEST
 		);
 	}
 

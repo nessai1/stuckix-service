@@ -3,7 +3,7 @@ defineProps(['issue']);
 
 function redirectIssue(issue)
 {
-  window.location.href = 'issue.html?id=' + issue.eventId;
+  window.location.href = '/issues/' + issue.eventId;
 }
 
 function getPath(issue)

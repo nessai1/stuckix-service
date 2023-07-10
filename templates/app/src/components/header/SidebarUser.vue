@@ -23,7 +23,7 @@ export default {
   <div class="projects-sidebar-title-container">
     <div class="sidebar-user">
       <img class="avatar" width="33" height="33" v-if="$props.avatar" :src="avatar" alt="user avatar">
-      <img class="avatar" width="33" height="33" v-else src="./anonim.jpg">
+      <img class="avatar" width="33" height="33" v-else src="/icons/anonim.jpg">
     </div>
     <div class="projects-sidebar-title-textblock">
       <div class="projects-sidebar-title-username">{{ $props.name }}</div>

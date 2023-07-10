@@ -14,8 +14,8 @@ function getPath(issue)
     <ul class="w-8/12 selector">
       <SelectTrace v-for="context in props.issue.exception.stacktrace.contexts" :context="context" />
     </ul>
-    <div class="w-full code selector">
-      <Code :context="props.issue.exception.stacktrace.contexts[3]" />
+    <div class="w-full code selector" v-if="props.issue.exception.stacktrace.contexts">
+      <Code :context="props.issue.exception.stacktrace.contexts" />
     </div>
   </div>
 </template>

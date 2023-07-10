@@ -39,7 +39,7 @@ class Trace
 	public string $eventId;
 
 	#[ORM\Column(type: Types::STRING, length: 36, enumType: TraceStatus::class, options: ["default" => TraceStatus::NEW])]
-	public TraceStatus $status;
+	public TraceStatus $status = TraceStatus::NEW;
 
 	#[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, updatable: false)]
 	public \DateTimeImmutable $createDateTime;
