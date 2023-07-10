@@ -1,12 +1,21 @@
+<script setup>
+import SelectTrace from "./SelectTrace.vue";
+import Code from "./Code.vue";
+const props = defineProps(['issue']);
+
+function getPath(issue)
+{
+  return issue.exception.stacktrace.contexts.pop().abs_path;
+}
+</script>
+
 <template>
   <div class="stack">
     <ul class="w-8/12 selector">
-      <SelectTrace row="12" file="E:\hrtoolkit\vendor\laravel\framework\src\illuminateadadasdasdasd" />
-      <SelectTrace :selected="true" row="12" file="E:\hrtoolkit\vendor\laravel\framework\src\illuminateadadasdasdasd" />
-      <SelectTrace row="12" file="E:\hrtoolkit\vendor\laravel\framework\src\illuminateadadasdasdasd" />
+      <SelectTrace v-for="context in props.issue.exception.stacktrace.contexts" :context="context" />
     </ul>
-    <div class="w-full code">
-      <Code />
+    <div class="w-full code selector">
+      <Code :context="props.issue.exception.stacktrace.contexts[3]" />
     </div>
   </div>
 </template>
@@ -22,7 +31,3 @@
     overflow: scroll;
   }
 </style>
-<script setup>
-import SelectTrace from "./SelectTrace.vue";
-import Code from "./Code.vue";
-</script>

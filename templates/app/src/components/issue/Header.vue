@@ -1,3 +1,18 @@
+<script setup>
+const props = defineProps(['issue']);
+
+function getPath(issue)
+{
+  return issue.exception.stacktrace.contexts.pop().abs_path;
+}
+
+function getErrorLine(issue)
+{
+  return issue.exception.stacktrace.contexts.pop().line_number;
+}
+console.log(props.issue)
+</script>
+
 <template>
   <div class="header-container w-full h-min">
     <div class="flex text-gray-300">
@@ -5,18 +20,18 @@
       <span>Ошибки</span>
       <img src="../../../public/icons/arrow-up-s-line.svg" class="ml-3">
       <img src="../../../public/icons/folder-5-fill.svg" class="ml-3">
-      <span class="ml-2">Навзвание проекта</span>
+      <span class="ml-2">{{props.issue.project.name}}</span>
     </div>
 
     <div class="flex mt-4 items-end">
       <span class="font-semibold text-2xl">Ошибка</span>
-      <span class="font-medium text-gray-500 ml-3 pb-0.5">/index.php в строке 25</span>
+      <span class="font-medium text-gray-500 ml-3 pb-0.5">{{getPath(issue)}} в строке {{getErrorLine(issue)}}</span>
     </div>
 
     <div class="flex mt-4">
       <div class="red-dot border bg-red-600 rounded-full mt-2"></div>
       <span class="ml-3 w-1/2 text-gray-600 text-left">
-        Описание ошибки в строчку, длинное описание ошибки, описание ошибки в две строки
+        {{props.issue.exception.value}}
       </span>
     </div>
   </div>

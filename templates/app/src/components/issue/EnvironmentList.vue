@@ -1,25 +1,19 @@
 <script setup>
 
 import EnvironmentItem from "./EnvironmentItem.vue";
-// const props = defineProps(['environment']);
-const props = {};
-props.environment = [
+const props = defineProps(['issue']);
+const environment = [
   {
-    id: 'php',
-    title: 'php',
-    version: '8.1.18',
-  },
-  {
-    id: 'apple',
-    title: 'Darwin',
-    version: '22.5.0',
+    id: props.issue.platform,
+    title: props.issue.platform,
+    version: props.issue.phpVersion,
   },
 ];
 </script>
 
 <template>
 <EnvironmentItem
-    v-for="item in props.environment"
+    v-for="item in environment"
     :item="item"
     :key="item.id"
 />

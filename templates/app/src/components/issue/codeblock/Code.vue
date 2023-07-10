@@ -1,10 +1,7 @@
 <template>
-  <Codeline line="23" code="echo 'hello world!';" />
-  <Codeline line="23" code="echo 'hello world!';" />
-  <Codeline line="23" code="echo 'hello world!';" />
-  <Codeline :active="true" line="23" code="echo 'hello world!';" />
-  <Codeline line="230" code="echo 'hello world!';" />
+  <Codeline v-for="(line, key) in context.lines" :line="key" :code="line" />
 </template>
 <script setup>
 import Codeline from "./Codeline.vue";
+const props = defineProps(['context']);
 </script>

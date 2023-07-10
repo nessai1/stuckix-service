@@ -1,19 +1,33 @@
+<script setup>
+import Stack from "./Stack.vue";
+const props = defineProps(['issue']);
+
+function getPath(issue)
+{
+  return issue.exception.stacktrace.contexts.pop().abs_path;
+}
+
+function getErrorLine(issue)
+{
+  return issue.exception.stacktrace.contexts.pop().line_number;
+}
+
+</script>
+
 <template>
-  <div class="w-full border rounded-md code-block">
+  <div class="w-full border rounded-md code-block mt-3">
     <div>
       <div class="main-info border-b-2">
         <span>Ошибкa</span>
         <p>
-          Описание ошибки в строчку, длинное описание ошибки, описание
-          ошибки в две строки
+          {{props.issue.exception.value}}
         </p>
       </div>
       <div class="error-info w-full border-b-2">
-        <span>illuminate\Routing\AbstractRouteCollection::methodNotAllowed</span>
-        <p>E:\hrtoolkit\vendor\laravel\framework\src\illuminate</p>
+        <p>{{getPath(props.issue)}}</p>
       </div>
     </div>
-    <Stack/>
+    <Stack :issue="props.issue"/>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -63,6 +77,3 @@
     }
   }
 </style>
-<script setup>
-import Stack from "./Stack.vue";
-</script>

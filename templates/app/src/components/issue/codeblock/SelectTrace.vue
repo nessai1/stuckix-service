@@ -1,9 +1,10 @@
+<script setup>
+</script>
+
 <script>
 export default {
   props: {
-    row: String,
-    file: String,
-    selected: Boolean
+    context: Object,
   }
 }
 </script>
@@ -12,11 +13,11 @@ export default {
       :class="selected ? 'selected' : ''"
   >
     <div class="row">
-      {{ row }}
+      {{ context.line_number }}
     </div>
     <div class="file">
       <span>
-        {{ file }}
+        {{ context.abs_path }}
       </span>
     </div>
   </li>
