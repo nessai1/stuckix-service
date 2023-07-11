@@ -20,7 +20,7 @@ console.log(props.issue)
       <span>Ошибки</span>
       <img src="/icons/arrow-up-s-line.svg" class="ml-3">
       <img src="/icons/folder-5-fill.svg" class="ml-3">
-      <span class="ml-2">{{props.issue.project.name}}</span>
+      <span class="ml-2" v-if="props.issue.project">{{props.issue.project.name}}</span>
     </div>
 
     <div class="flex mt-4 items-end">

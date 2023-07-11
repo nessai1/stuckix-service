@@ -43,9 +43,14 @@ class IssuesController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstra
 				'phpVersion' => $issue->phpVersion,
 				'modules' => $issue->modules,
 				'status' => $issue->status,
+				'project' => [
+					'name' => $issue->getProject()->name,
+					'description' => $issue->getProject()->description,
+					'token' => $issue->getProject()->token,
+					'createDateTime' => $issue->getProject()->createDateTime,
+				]
 			];
 		}
-
 		return $this->render(
 			'issues.html.twig',
 			[
